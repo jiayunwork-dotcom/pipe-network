@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pipe-network · 稳态水力求解</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>管网稳态水力求解</h1>
+    <p class="sub">Hazen-Williams 摩阻 · 节点水头牛顿法 · 环能量闭合</p>
+  </header>
+  <main>
+    <section class="panel">
+      <div class="row">
+        <label>示例</label>
+        <select id="example"></select>
+        <button id="load">加载</button>
+        <button id="solve">计算</button>
+      </div>
+      <textarea id="netlist" spellcheck="false" placeholder="粘贴节点/管段 JSON"></textarea>
+      <div id="error" class="error hidden"></div>
+    </section>
+    <section class="panel">
+      <h2>拓扑示意</h2>
+      <svg id="diagram" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"></svg>
+    </section>
+    <section class="panel">
+      <h2>管段流量 (m³/s)</h2>
+      <table id="flows"><thead><tr><th>管段</th><th>流量</th><th>水头损失(m)</th></tr></thead><tbody></tbody></table>
+      <h2>节点水头 (m)</h2>
+      <table id="heads"><thead><tr><th>节点</th><th>水头</th><th>压力水头</th></tr></thead><tbody></tbody></table>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

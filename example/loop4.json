@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "R", "elevation": 0, "demand": 0, "head": 100, "is_source": true},
+    {"id": "A", "elevation": 0, "demand": 0.01},
+    {"id": "B", "elevation": 0, "demand": 0.01},
+    {"id": "C", "elevation": 0, "demand": 0.02}
+  ],
+  "pipes": [
+    {"id": "P1", "from": "R", "to": "A", "length": 1000, "diameter": 0.3, "rough": 120},
+    {"id": "P2", "from": "R", "to": "B", "length": 1000, "diameter": 0.3, "rough": 120},
+    {"id": "P3", "from": "A", "to": "B", "length": 1000, "diameter": 0.3, "rough": 120},
+    {"id": "P4", "from": "A", "to": "C", "length": 1000, "diameter": 0.3, "rough": 120},
+    {"id": "P5", "from": "B", "to": "C", "length": 1000, "diameter": 0.3, "rough": 120}
+  ]
+}

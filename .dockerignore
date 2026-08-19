@@ -1,0 +1,10 @@
+.git
+.gitignore
+.DS_Store
+node_modules
+vendor
+out/
+dist/
+sim.log
+server.log
+probe.log
