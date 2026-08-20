@@ -22,7 +22,7 @@ func Resistance(p *network.Pipe) float64 {
 // HeadLoss is the Hazen-Williams head loss (drop along the flow direction) for a
 // pipe carrying flow q. Positive q means flow from the pipe's `From` to `To`.
 func HeadLoss(r, q float64) float64 {
-	return applyHeadLoss(r, q)
+	return r * math.Copysign(math.Pow(math.Abs(q), HWExp), q)
 }
 
 // HeadLossDeriv is the derivative d(HeadLoss)/dq = HWExp * r * |q|^(HWExp-1).
