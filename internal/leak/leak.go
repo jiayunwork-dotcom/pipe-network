@@ -39,11 +39,7 @@ func cloneIndexed(ig *network.Indexed) *network.Indexed {
 }
 
 func WithDemand(n *network.Network, nodeID string, extra float64) *network.Network {
-	cp := cloneNetwork(n)
-	if nd, ok := cp.Nodes[nodeID]; ok {
-		nd.Leak += extra
-	}
-	return cp
+	return applyExtra(n, nodeID, extra)
 }
 
 func SolveWithLeak(n *network.Network, spec Spec, opts hydraulics.Options) (*hydraulics.Result, error) {
