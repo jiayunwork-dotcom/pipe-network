@@ -23,10 +23,7 @@ func Prepare(n *Network) (*Indexed, error) {
 	}
 	ids := n.NodeIDs()
 	sort.Strings(ids)
-	idx := map[string]int{}
-	for i, id := range ids {
-		idx[id] = i
-	}
+	idx := bindIndex(ids)
 	ig := &Indexed{
 		IDs:       ids,
 		Index:     idx,
