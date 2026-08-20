@@ -14,10 +14,7 @@ import (
 // that SelectDiameter rounds up to. The metre values are the millimetre entries
 // divided by 1000, matching the Pipe.Diameter unit used everywhere else.
 func StandardDiametersMM() []float64 {
-	mm := []float64{50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000}
-	out := make([]float64, len(mm))
-	copy(out, mm)
-	return out
+	return fillDiameters()
 }
 
 // SizePipeByHeadLoss returns the diameter (m) required so that a pipe of length
