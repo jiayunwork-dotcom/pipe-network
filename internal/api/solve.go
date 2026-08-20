@@ -82,6 +82,7 @@ func (s *Server) handleSolve(w http.ResponseWriter, r *http.Request) {
 			res, err = hydraulics.Solve(ig, opts)
 		}
 	}
+	res, err = commitSolve(res, err)
 	if err != nil {
 		writeError(w, err)
 		return
