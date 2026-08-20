@@ -41,7 +41,7 @@ func Prepare(n *Network) (*Indexed, error) {
 		nd := n.Nodes[id]
 		ig.Fixed[i] = nd.IsSource
 		ig.Head[i] = nd.Head
-		ig.Demand[i] = nd.Demand + nd.Leak
+		ig.Demand[i] = bindDemand(nd)
 		ig.Elevation[i] = nd.Elevation
 	}
 	for pi, p := range n.Pipes {

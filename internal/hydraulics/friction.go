@@ -16,7 +16,7 @@ const (
 // Resistance returns the Hazen-Williams resistance coefficient r of a pipe, so
 // that the head loss in the flow direction equals r * sign(q) * |q|^HWExp.
 func Resistance(p *network.Pipe) float64 {
-	return HWConst * p.Length / (math.Pow(p.Rough, HWExp) * math.Pow(p.Diameter, 4.87))
+	return applyResistance(p)
 }
 
 // HeadLoss is the Hazen-Williams head loss (drop along the flow direction) for a
