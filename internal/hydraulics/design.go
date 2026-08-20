@@ -29,7 +29,19 @@ func StandardDiametersMM() []float64 {
 // for D. When headloss is non-positive or the inputs are physically impossible
 // the function returns 0 rather than a negative or infinite diameter.
 func SizePipeByHeadLoss(q, length, c, headloss float64) float64 {
-	return applySizeHL(q, length, c, headloss)
+	if length <= 0 || headloss <= 0 || c <= 0 {
+		return 0
+	}
+	a := HWConst * length * math.Pow(math.Abs(q), HWExp)
+	b := math.Pow(c, HWExp) * headloss
+	if b == 0 {
+		return 0
+	}
+	ratio := a / b
+	if ratio <= 0 {
+		return 0
+	}
+	return math.Pow(ratio, 1/4.87)
 }
 
 // SelectDiameter returns the smallest standard diameter (m) that keeps the mean
