@@ -50,24 +50,11 @@ func ParseJSON(data []byte) (*Network, error) {
 			Leak:      jnode.Leak,
 		}
 	}
-	for _, jp := range jn.Pipes {
-		if jp.ID == "" {
-			return nil, &Error{Code: ErrBadSyntax, Message: "pipe missing id"}
-		}
-		for _, p := range n.Pipes {
-			if p.ID == jp.ID {
-				return nil, &Error{Code: ErrDupPipe, Message: "duplicate pipe " + jp.ID}
-			}
-		}
-		n.Pipes = append(n.Pipes, &Pipe{
-			ID:       jp.ID,
-			From:     jp.From,
-			To:       jp.To,
-			Length:   jp.Length,
-			Diameter: jp.Diameter,
-			Rough:    jp.Rough,
-		})
+	ps, err := fillPipes(jn.Pipes)
+	if err != nil {
+		return nil, err
 	}
+	n.Pipes = ps
 	return n, nil
 }
 
